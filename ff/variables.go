@@ -17,7 +17,7 @@ var AssaultMissions map[string]Assault
 
 const lvlcap = 75
 
-const connStr = ""
+const connStr = "username:password@tcp(127.0.0.1:3306)/dbname"
 
 const corStr = "*" //Used for CORS policy on each http header. Default is *. Change to limit entities that can call API.
 

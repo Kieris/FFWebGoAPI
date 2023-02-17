@@ -66,6 +66,6 @@ func main() {
 	api.HandleFunc("/missions/{sID}/{itemID}", ffdb.GetCatMission).Methods(http.MethodGet)
 
 	api.HandleFunc("/pup/skillcap/{hID}/{fID}/{lID}", ffdb.GetPupSkillRanks).Methods(http.MethodGet)
-	ffdb.InitJson()
+	//ffdb.InitJson()
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
