@@ -14,7 +14,7 @@ I made this for fun and because I loved playing FFXI in it's prime. This was my 
 it did work back when I made the WebApp. 
 
 If anyone would like more information about the structure of the folders or would like the images and json files that are not included with the 
-overall WebApp, you can contact me at gteam6@gmail.com.
+overall WebApp, you can contact me at gteam6@protonmail.com.
 
 Hopefully I'll be able to update this to match the newest Wings schema, but I have plenty of other things to do first that are higher priority.
 
