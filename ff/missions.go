@@ -21,8 +21,7 @@ type MapToInIndex struct {
 }
 
 func GetMissions(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	mishList := [len(expansionsOn)]NameVal{}
 	for k := range expansionsOn {
 		mish := new(NameVal)
@@ -36,8 +35,7 @@ func GetMissions(w http.ResponseWriter, r *http.Request) {
 
 func GetMissionList(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 
 	var retList []*MapToInIndex
@@ -67,8 +65,7 @@ func GetMissionList(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetAssaultList(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	keys := []Assault{}
 	for _, val := range AssaultMissions {
 		if val.Level <= lvlcap {
@@ -86,8 +83,7 @@ func GetAssaultList(w http.ResponseWriter, r *http.Request) {
 
 func GetCatMission(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 	itemID := pathParams["itemID"]
 

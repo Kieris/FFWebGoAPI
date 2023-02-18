@@ -38,8 +38,7 @@ type Ability struct {
 
 func GetAbility(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	aID := -1
 	var err error
 	if val, ok := pathParams["aID"]; ok {
@@ -85,8 +84,7 @@ func GetAbility(w http.ResponseWriter, r *http.Request) {
 
 func GetAbilitiesByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	jID := -1
 	var err error
 	if val, ok := pathParams["jID"]; ok {
@@ -132,8 +130,7 @@ func GetAbilitiesByJob(w http.ResponseWriter, r *http.Request) {
 
 func GetMiscNotes(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	jID := pathParams["jID"]
 	typ := pathParams["typ"]
 

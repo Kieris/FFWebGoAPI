@@ -178,8 +178,7 @@ type NPCGuild struct {
 
 func GetFishAreasByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	fID := -1
 	var err error
@@ -235,8 +234,7 @@ func GetFishAreasByID(w http.ResponseWriter, r *http.Request) {
 
 func GetFishDetsByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	fID := -1
 	var err error
@@ -343,8 +341,7 @@ enum FISHINGLEGENDARY : uint32
 
 func GetFishByLvl(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 	incID := pathParams["incID"]
 	l1ID := -1
@@ -405,8 +402,7 @@ func GetFishByLvl(w http.ResponseWriter, r *http.Request) {
 
 func GetRecipesByCraft(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 	l1ID := -1
 	var err error
@@ -462,8 +458,7 @@ func GetRecipesByCraft(w http.ResponseWriter, r *http.Request) {
 
 func GetRecipesUsingItem(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -504,8 +499,7 @@ func GetRecipesUsingItem(w http.ResponseWriter, r *http.Request) {
 
 func GetStoreItems(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {

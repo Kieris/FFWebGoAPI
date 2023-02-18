@@ -118,8 +118,7 @@ func iterate(path string) {
 
 func GetEventsByZone(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	aID := -1
 	var err error
@@ -167,8 +166,7 @@ func GetEventsByZone(w http.ResponseWriter, r *http.Request) {
 
 func GetEventsActorData(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	aID := -1
 	var err error

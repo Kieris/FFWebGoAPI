@@ -102,8 +102,7 @@ type Linkshell struct {
 
 func GetCharByName(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	sID := pathParams["sID"]
 

@@ -67,5 +67,5 @@ func main() {
 
 	api.HandleFunc("/pup/skillcap/{hID}/{fID}/{lID}", ffdb.GetPupSkillRanks).Methods(http.MethodGet)
 	ffdb.InitJson()
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":8080", r))//api listens on port 8080 of host machine
 }

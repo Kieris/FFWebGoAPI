@@ -40,8 +40,7 @@ type BcnmNpc struct {
 }
 
 func GetBCNMs(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	bcnms := GetBCList()
 	jsonData, _ := json.Marshal(&bcnms)
 	w.Write(jsonData)
@@ -79,8 +78,7 @@ func GetBCList() []*BCNM {
 
 func GetBCNMDets(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {

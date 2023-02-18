@@ -35,6 +35,7 @@ type SkillRank struct {
 type ValByte struct {
 	Value int16
 }
+
 type ValString struct {
 	Value *string
 }
@@ -51,8 +52,7 @@ type Merit struct {
 
 func GetTrait(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	aID := -1
 	var err error
 	if val, ok := pathParams["aID"]; ok {
@@ -70,13 +70,7 @@ func GetTrait(w http.ResponseWriter, r *http.Request) {
 		panic(err.Error())
 	}
 	defer db.Close()
-	/*
-		err = db.Ping()
-		if err != nil {
-			fmt.Println("error verifying connection with db.Ping")
-			panic(err.Error())
-		}
-	*/
+
 	rows, err := db.Query("SELECT * from traits where traitid =?", aID)
 	if err != nil {
 		fmt.Println("error selecting trait")
@@ -96,8 +90,7 @@ func GetTrait(w http.ResponseWriter, r *http.Request) {
 
 func GetTraitsByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -146,8 +139,7 @@ func GetTraitsByJob(w http.ResponseWriter, r *http.Request) {
 
 func GetTraitsByLevel(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -192,8 +184,7 @@ func GetTraitsByLevel(w http.ResponseWriter, r *http.Request) {
 
 func GetSkillRanksByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -234,8 +225,7 @@ func GetSkillRanksByJob(w http.ResponseWriter, r *http.Request) {
 
 func GetSkillRanksByLevel(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -263,7 +253,6 @@ func GetSkillRanksByLevel(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetSkillRanks(sID int, rID int) []*ValByte {
-
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		fmt.Println("error validating sql.Open arguments")
@@ -291,8 +280,7 @@ func GetSkillRanks(sID int, rID int) []*ValByte {
 
 func GetMeritsByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {

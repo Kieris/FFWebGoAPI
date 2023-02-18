@@ -3,6 +3,7 @@ package ff
 import (
 	"bufio"
 	"database/sql"
+	"net/http"
 	"fmt"
 	"os"
 	"strings"
@@ -23,6 +24,11 @@ func Abs(value int) int {
 	} else {
 		return value
 	}
+}
+
+func InitHeader(w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", corStr)
 }
 
 func romanic(val int) string {

@@ -51,8 +51,7 @@ type BlueSpell struct {
 
 func GetSpellsByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -155,8 +154,7 @@ func GetSpellJobLevel(arr []byte, jobId int) byte {
 
 func GetMiscBluNotes(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	jID := pathParams["jID"]
 
 	db, err := sql.Open("mysql", connStr)
@@ -217,5 +215,4 @@ func GetMiscBluNotes(w http.ResponseWriter, r *http.Request) {
 	rowb.Notes = GetScriptDets("spells/bluemagic/" + jID)
 	jsonData, _ := json.Marshal(rowb)
 	w.Write(jsonData)
-
 }

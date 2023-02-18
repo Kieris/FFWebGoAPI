@@ -152,8 +152,7 @@ type FishMob struct {
 
 func GetMobShort(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 
 	db, err := sql.Open("mysql", connStr)
@@ -204,8 +203,7 @@ func GetMobShort(w http.ResponseWriter, r *http.Request) {
 
 func GetMobGroupByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -226,16 +224,7 @@ func GetMobGroupByID(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	/*
-		pID := -1
-		if val, ok := pathParams["pID"]; ok {
-			pID, err = strconv.Atoi(val)
-			if err != nil {
-				w.WriteHeader(http.StatusInternalServerError)
-				w.Write([]byte(`{"message": "need a number"}`))
-				return
-			}
-		} */
+
 	items := GetMobDetails(sID, zID)
 	jsonData, _ := json.Marshal(&items)
 	w.Write(jsonData)
@@ -404,8 +393,7 @@ func GetMobDetails(sID int, zID int) []*MobGroup {
 
 func GetFishMobByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	fID := pathParams["fID"]
 
@@ -515,6 +503,7 @@ func GetMLevel(PMob MobGroup) int {
 		return 10
 	}
 }
+
 func GetStats(PMob MobGroup) *MobGroup {
 	mLvl := GetMLevel(PMob)
 

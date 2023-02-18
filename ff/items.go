@@ -62,8 +62,7 @@ type DropMob struct {
 
 func GetItemByName(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := pathParams["sID"]
 
 	db, err := sql.Open("mysql", connStr)
@@ -93,19 +92,6 @@ func GetItemByName(w http.ResponseWriter, r *http.Request) {
 		}
 		defer erows.Close()
 
-		/*if row.SubID == 0 {
-			if row.ItemID >= 8449 && row.ItemID <= 8683 {
-				row.Notes = append(row.Notes, "This item is only available in the Puppetmaster attachment menu")
-			} else {
-				row.Notes = GetScriptItemDets(row.Name)
-			}
-		} else {
-			if row.SubID > 8448 {
-				row.Notes = append(row.Notes, fmt.Sprintf("Adds access to the %s attachment when properly traded to Tateeya", TransformName(*row.SortName)))
-			} else {
-				row.Notes = append(row.Notes, fmt.Sprintf("Teaches the spell %s", TransformName(*row.SortName)))
-			}
-		} */
 		row.SortName = nil // making null because it is not necessary after this point
 		if row.ItemID >= 8449 && row.ItemID <= 8683 {
 			row.Notes = "This item is only available in the Puppetmaster attachment menu"
@@ -180,8 +166,7 @@ func GetItemByName(w http.ResponseWriter, r *http.Request) {
 
 func GetItemByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -231,21 +216,7 @@ func GetItems(sID int) []*Item {
 		} else {
 			row.Notes = ItemDes[strconv.Itoa(sID)]
 		}
-		/*
-			if row.SubID == 0 {
-				if row.ItemID >= 8449 && row.ItemID <= 8683 {
-					row.Notes = append(row.Notes, "This item is only available in the Puppetmaster attachment menu")
-				} else {
-					row.Notes = GetScriptItemDets(row.Name)
-				}
-			} else {
-				if row.SubID > 8448 {
-					row.Notes = append(row.Notes, fmt.Sprintf("Adds access to the %s attachment when properly traded to Tateeya", TransformName(*row.SortName)))
-				} else {
-					row.Notes = append(row.Notes, fmt.Sprintf("Teaches the spell %s", TransformName(*row.SortName)))
-				}
-			}
-		*/
+
 		row.SortName = nil // making null because it is not necessary after this point
 
 		var mds []*Mods
@@ -312,8 +283,7 @@ func GetItems(sID int) []*Item {
 
 func GetItemDetsByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -431,8 +401,7 @@ func GetItemDetsByID(w http.ResponseWriter, r *http.Request) {
 
 func GetArmorByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {

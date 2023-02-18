@@ -83,8 +83,7 @@ type PetSkill struct {
 
 func GetPetsByJob(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -144,8 +143,7 @@ func GetPetsByJob(w http.ResponseWriter, r *http.Request) {
 
 func GetPetByID(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -311,8 +309,7 @@ func GetPetDetails(sID int) []*PetDets {
 }
 
 func GetPupSpells(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
@@ -352,8 +349,7 @@ func GetPupSpells(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetPupFrames(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
@@ -406,8 +402,7 @@ func GetPupFrames(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetPupAttachments(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		fmt.Println("error validating sql.Open arguments")
@@ -462,8 +457,7 @@ func GetPupAttachments(w http.ResponseWriter, r *http.Request) {
 
 func GetPupSkillRanks(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 
 	var err error
 	lID := -1

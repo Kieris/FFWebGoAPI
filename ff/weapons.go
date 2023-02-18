@@ -47,8 +47,7 @@ type WS struct {
 
 func GetWeapon(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	aID := -1
 	var err error
 	if val, ok := pathParams["aID"]; ok {
@@ -85,8 +84,7 @@ func GetWeapon(w http.ResponseWriter, r *http.Request) {
 
 func GetWeaponsBySkill(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -127,8 +125,7 @@ func GetWeaponsBySkill(w http.ResponseWriter, r *http.Request) {
 
 func GetWeaponsByDmgType(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -169,8 +166,7 @@ func GetWeaponsByDmgType(w http.ResponseWriter, r *http.Request) {
 
 func GetWSBySkillType(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -233,8 +229,7 @@ func GetWSBySkillType(w http.ResponseWriter, r *http.Request) {
 
 func GetWSBySCType(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
@@ -280,8 +275,7 @@ func GetWSBySCType(w http.ResponseWriter, r *http.Request) {
 
 func GetMapForSC(w http.ResponseWriter, r *http.Request) {
 	pathParams := mux.Vars(r)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", corStr)
+	InitHeader(w)
 	sID := -1
 	var err error
 	if val, ok := pathParams["sID"]; ok {
