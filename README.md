@@ -10,11 +10,9 @@ Parsing through these scripts and using details from the json files made it poss
 These lua scripts are available with any version of the server code. In this API the scripts folder was placed in the root directory where 
 the main go file is.
 
-I made this for fun and because I loved playing FFXI in it's prime. This was my first time writing anything in Go, so the code may not be pretty, but
-it did work back when I made the WebApp. 
+I made this for fun and because I loved playing FFXI in it's prime. This was my first time writing anything in Go, so the code may not be pretty, but it does work when I tested it in Feb 2023 with newer Wings database version. 
 
 If anyone would like more information about the structure of the folders or would like the images and json files that are not included with the 
 overall WebApp, you can contact me at gteam6@protonmail.com.
 
-Hopefully I'll be able to update this to match the newest Wings schema, but I have plenty of other things to do first that are higher priority.
 
