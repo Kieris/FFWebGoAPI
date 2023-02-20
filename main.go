@@ -4,12 +4,17 @@ import (
 	ffdb "goAPI/ff"
 	"log"
 	"net/http"
-
+	"fmt"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	r := mux.NewRouter()
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "<h1>This is the homepage.\n</h1>")
+	})
+
 	api := r.PathPrefix("/api/v1").Subrouter()
 	api.HandleFunc("/abilities/{aID}", ffdb.GetAbility).Methods(http.MethodGet)
 	api.HandleFunc("/zones", ffdb.GetZones).Methods(http.MethodGet)
@@ -67,5 +72,5 @@ func main() {
 
 	api.HandleFunc("/pup/skillcap/{hID}/{fID}/{lID}", ffdb.GetPupSkillRanks).Methods(http.MethodGet)
 	ffdb.InitJson()
-	log.Fatal(http.ListenAndServe(":8080", r))//api listens on port 8080 of host machine
+	log.Fatal(http.ListenAndServe(":80", r))//api listens on port 8080 of host machine
 }

@@ -88,7 +88,7 @@ type Assault struct {
 }
 
 func Start() {
-	iterate("./FFXI_Events/")
+	iterate(jsonPath)
 }
 
 func iterate(path string) {
@@ -99,7 +99,7 @@ func iterate(path string) {
 		}
 
 		// Open our jsonFile
-		jsonFile, err := os.Open("./FFXI_Events/" + info.Name())
+		jsonFile, err := os.Open(jsonPath + info.Name())
 		// if we os.Open returns an error then handle it
 		if err != nil {
 			fmt.Println(err)
@@ -132,7 +132,7 @@ func GetEventsByZone(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Open our jsonFile
-	jsonFile, err := os.Open(fmt.Sprintf("%s%d%s", "./FFXI_Events/", aID, ".json"))
+	jsonFile, err := os.Open(fmt.Sprintf("%s%d%s", jsonPath, aID, ".json"))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -190,7 +190,7 @@ func GetEventsActorData(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Open our jsonFile
-	jsonFile, err := os.Open(fmt.Sprintf("%s%d%s", "./FFXI_Events/", aID, ".json"))
+	jsonFile, err := os.Open(fmt.Sprintf("%s%d%s", jsonPath, aID, ".json"))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -218,7 +218,7 @@ func GetEventsActorData(w http.ResponseWriter, r *http.Request) {
 func GetAttachmentJson() {
 	mods := make(map[string][]PupMod)
 	// open file
-	f, err := os.Open("./FFXI_Events/Attachments.json")
+	f, err := os.Open(jsonPath + "Attachments.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -238,7 +238,7 @@ func GetAttachmentJson() {
 func GetBCNMJson() {
 	treasure := make(map[string][]BCTGroup)
 	// open file
-	f, err := os.Open("./FFXI_Events/BCNMLoots.json")
+	f, err := os.Open(jsonPath + "BCNMLoots.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -257,7 +257,7 @@ func GetBCNMJson() {
 
 func GetDesJson() {
 	keyitems := make(map[string]NameVal)
-	f, err := os.Open("./FFXI_Events/Key_Items.json")
+	f, err := os.Open(jsonPath + "Key_Items.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -274,7 +274,7 @@ func GetDesJson() {
 	KeyItems = keyitems
 
 	titles := make(map[string]string)
-	f, err = os.Open("./FFXI_Events/Titles.json")
+	f, err = os.Open(jsonPath + "Titles.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -291,7 +291,7 @@ func GetDesJson() {
 	Titles = titles
 
 	abils := make(map[string]NameVal)
-	f, err = os.Open("./FFXI_Events/Ability_Des.json")
+	f, err = os.Open(jsonPath + "Ability_Des.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -308,7 +308,7 @@ func GetDesJson() {
 	AbilityDes = abils
 
 	spells := make(map[string]string)
-	f, err = os.Open("./FFXI_Events/Spell_Des.json")
+	f, err = os.Open(jsonPath + "Spell_Des.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -326,7 +326,7 @@ func GetDesJson() {
 
 	items := make(map[string]string)
 
-	f, err = os.Open("./FFXI_Events/Item_Des.json")
+	f, err = os.Open(jsonPath + "Item_Des.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -346,7 +346,7 @@ func GetDesJson() {
 func GetMissionsJson() {
 	missions := make(map[string]map[string]NameVal)
 	for k := range expansionsOn {
-		f, err := os.Open("./FFXI_Events/" + expansionsOn[k] + "_missions.json")
+		f, err := os.Open(jsonPath +  expansionsOn[k] + "_missions.json")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -382,7 +382,7 @@ func GetMissionsJson() {
 func GetZoneMapPaths() {
 	items := make(map[string][]string)
 
-	f, err := os.Open("./FFXI_Events/Map_Paths.json")
+	f, err := os.Open(jsonPath + "Map_Paths.json")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -16,5 +16,5 @@ it did work back when I made the WebApp.
 If anyone would like more information about the structure of the folders or would like the images and json files that are not included with the 
 overall WebApp, you can contact me at gteam6@protonmail.com.
 
-Hopefully I'll be able to update this to match the newest Wings schema, but I have plenty of other things to do first that are higher priority.
+A docker image for this project can be built by going to the directory and executing $docker build -t ff-webgoapi:multistage -f Dockerfile .
 

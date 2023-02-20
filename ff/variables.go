@@ -17,8 +17,9 @@ var AssaultMissions map[string]Assault
 
 const lvlcap = 75
 
-const connStr = "username:password@tcp(IPaddress:port)/dbname" //Used for database connection. Change to your own.
+const jsonPath = "./json/"
 
+const connStr = "username:password@tcp(IPaddress:port)/dbname" //Used for database connection. Change to your own.
 
 const corStr = "*" //Used for CORS policy on each http header. Default is *. Change to limit entities that can call API.
 
