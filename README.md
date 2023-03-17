@@ -14,7 +14,7 @@ I made this for fun and because I loved playing FFXI in it's prime. This was my 
 it did work back when I made the WebApp. 
 
 If anyone would like more information about the structure of the folders or would like the images and json files that are not included with the 
-overall WebApp, you can contact me at gteam6@protonmail.com.
+overall WebApp, you can contact me at josh@garren.dev.
 
 A docker image for this project can be built by going to the directory and executing $docker build -t ff-webgoapi:multistage -f Dockerfile .
 
